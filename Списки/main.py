@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtCore import Qt
+from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel
 
 class InitialWindow(QWidget):
@@ -12,7 +13,8 @@ class InitialWindow(QWidget):
 
     def initUI(self):
         self.label = QLabel("Python | Списки")
-        self.label.setStyleSheet("font-size: 18px;")
+        self.label.setStyleSheet("font-size: 18px; font: bold")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
 # Теория по спискам
         self.explanation_label = QLabel("")
         self.explanation_label.setStyleSheet("font-size: 14px;")
