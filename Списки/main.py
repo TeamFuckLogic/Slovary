@@ -38,19 +38,15 @@ class InitialWindow(QWidget):
                                         "print(len(numbers))  # 5"
                                         "- Проверка наличия элемента в списке: "
                                         "print('apple' in fruits)  # True "
-                                        "Методы списков "
-                                        ""
-                                        ""
-                                        ""
-                                        ""
-                                        ""
-                                        ""
-                                        ""
-                                        ""
-                                        ""
-                                        ""
-                                        ""
-                                        "")
+                                        "Методы списков"
+                                        "Добавление элементов:"
+                                        "- append(): добавляет элемент в конец списка. \nfruits.append('grape')"
+                                        "- insert(): вставляет элемент на определенную позицию. \nfruits.insert(1, 'kiwi')"
+                                        "- extend(): добавляет несколько элементов в конец списка. \nfruits.extend(['mango', 'pineapple'])"
+                                        "Удаление элементов:"
+                                        "- remove(): удаляет первый найденный элемент. \nfruits.remove('banana')"
+                                        "- pop(): удаляет элемент по индексу (по умолчанию последний). \nfruits.pop(1)"
+                                        "- clear(): очищает весь список. \nfruits.clear()")
         self.explanation_label.setStyleSheet("font-size: 14px;")
 
         self.start_button = QPushButton("Проверить знания по теме")
