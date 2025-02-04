@@ -173,7 +173,7 @@ class QuestionsWindow(QWidget):
         minutes = int((elapsed_time % 3600) // 60)
         seconds = int(elapsed_time % 60)
         formatted_time = f"{hours:02}:{minutes:02}:{seconds:02}"  
-        self.clear_layout()
+        self.hide()
         
 
         self.final_window = FinalWindow(self.score, len(self.questions), formatted_time) 
