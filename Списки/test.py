@@ -1,5 +1,9 @@
+
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QRadioButton, QPushButton, QMessageBox
+import time
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QRadioButton, QPushButton
+from PyQt5.QtCore import QTimer
+from final import FinalWindow 
 
 class QuestionsWindow(QWidget):
     def __init__(self):
@@ -7,6 +11,10 @@ class QuestionsWindow(QWidget):
         self.initUI()
         self.current_question = 0
         self.score = 0
+        self.start_time = time.time()  
+        self.timer = QTimer(self)  
+        self.timer.timeout.connect(self.update_timer)  
+        self.timer.start(1000)  
         self.questions = [
             {
                 "question": "1. Что такое список в Python?",
@@ -117,7 +125,12 @@ class QuestionsWindow(QWidget):
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
 
+        self.timer_label = QLabel("Время: 00:00:00")
+        self.layout.addWidget(self.timer_label)
+
     def show_question(self):
+        self.clear_layout()  
+        self.layout.addWidget(self.timer_label) 
         self.layout.addWidget(QLabel(self.questions[self.current_question]["question"]))
         self.radio_buttons = []
         for i, option in enumerate(self.questions[self.current_question]["options"]):
@@ -135,24 +148,37 @@ class QuestionsWindow(QWidget):
                 self.score += 1
             self.current_question += 1
             if self.current_question < len(self.questions):
-                self.clear_layout()
-                self.show_question()
+                self.show_question() 
             else:
                 self.show_result()
 
     def clear_layout(self):
         for i in reversed(range(self.layout.count())):
             widget = self.layout.itemAt(i).widget()
-            if widget is not None:
+            if widget is not None and widget != self.timer_label:
                 widget.deleteLater()
 
+    def update_timer(self):
+        elapsed_time = time.time() - self.start_time 
+        hours = int(elapsed_time // 3600)
+        minutes = int((elapsed_time % 3600) // 60)
+        seconds = int(elapsed_time % 60)
+        formatted_time = f"{hours:02}:{minutes:02}:{seconds:02}"  
+        self.timer_label.setText(f"Время: {formatted_time}") 
+
     def show_result(self):
+        self.timer.stop()  
+        elapsed_time = time.time() - self.start_time  
+        hours = int(elapsed_time // 3600)
+        minutes = int((elapsed_time % 3600) // 60)
+        seconds = int(elapsed_time % 60)
+        formatted_time = f"{hours:02}:{minutes:02}:{seconds:02}"  
         self.clear_layout()
-        result_label = QLabel(f"Ваш результат: {self.score} из {len(self.questions)}")
-        self.layout.addWidget(result_label)
-        self.exit_button = QPushButton("Выход")
-        self.exit_button.clicked.connect(self.close)
-        self.layout.addWidget(self.exit_button)
+        
+
+        self.final_window = FinalWindow(self.score, len(self.questions), formatted_time) 
+        self.final_window.show()
+         
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

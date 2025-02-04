@@ -15,41 +15,42 @@ class InitialWindow(QWidget):
         self.label = QLabel("Python | Списки")
         self.label.setStyleSheet("font-size: 18px; font: bold")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
-# Теория по спискам
-        self.explanation_label = QLabel("Список (list) — это один из самых важных и часто используемых типов данных в Python. Список представляет собой упорядоченную коллекцию элементов, которые могут быть любого типа: числа, строки, другие списки и т.д. Списки являются изменяемыми, что означает, что вы можете изменять их содержимое после создания.\n"
+
+        self.explanation_label = QLabel("Список (list) — это один из самых важных и часто используемых типов данных в Python. Список представляет собой упорядоченную коллекцию элементов, \nкоторые могут быть любого типа: числа, строки, другие списки и т.д. Списки являются изменяемыми, что означает, что вы можете изменять их содержимое после создания.\n"
                                         "Verify \nRun \nCopy code \nmy_list = [1, 2, 3, 'Python', True]"
-                                        "Способы создания списков: "
-                                        "- Прямое создание списка:"
-                                        "fruits = ['apple', 'banana', 'cherry']"
-                                        "- Создание списка с помощью функции list():"
-                                        "numbers = list(range(1, 6))  # [1, 2, 3, 4, 5]"
-                                        "- Создание пустого списка: "
-                                        "empty_list = []"
-                                        "- Инициализация списков с помощью генераторов: "
-                                        "Основные операции со списками "
-                                        "squares = [x**2 for x in range(10)]  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81] "
-                                        "- Доступ к элементам списка: Элементы списка индексируются, начиная с 0. Можно использовать отрицательные индексы для доступа к элементам с конца списка."
-                                        "fruits = ['apple', 'banana', 'cherry'] \nprint(fruits[0])  # apple \nprint(fruits[-1])  # cherry "
-                                        "- Изменение элементов списка: "
-                                        "fruits[1] = 'orange' \nprint(fruits)  # ['apple', 'orange', 'cherry'] "
-                                        "- Срезы (slicing): Срезы позволяют получить подсписок из списка. "
-                                        "numbers = [1, 2, 3, 4, 5] \nprint(numbers[1:3])  # [2, 3] \nprint(numbers[:3])   # [1, 2, 3] \nprint(numbers[2:])   # [3, 4, 5] "
-                                        "- Длина списка: "
-                                        "print(len(numbers))  # 5"
-                                        "- Проверка наличия элемента в списке: "
-                                        "print('apple' in fruits)  # True "
-                                        "Методы списков"
-                                        "Добавление элементов:"
-                                        "- append(): добавляет элемент в конец списка. \nfruits.append('grape')"
-                                        "- insert(): вставляет элемент на определенную позицию. \nfruits.insert(1, 'kiwi')"
-                                        "- extend(): добавляет несколько элементов в конец списка. \nfruits.extend(['mango', 'pineapple'])"
-                                        "Удаление элементов:"
-                                        "- remove(): удаляет первый найденный элемент. \nfruits.remove('banana')"
-                                        "- pop(): удаляет элемент по индексу (по умолчанию последний). \nfruits.pop(1)"
-                                        "- clear(): очищает весь список. \nfruits.clear()")
+                                        "\n\nСпособы создания списков: \n"
+                                        "- Прямое создание списка:\n"
+                                        "fruits = ['apple', 'banana', 'cherry']\n"
+                                        "- Создание списка с помощью функции list():\n"
+                                        "numbers = list(range(1, 6))  # [1, 2, 3, 4, 5]\n"
+                                        "- Создание пустого списка: \n"
+                                        "empty_list = []\n"
+                                        "- Инициализация списков с помощью генераторов: \n"
+                                        "\n\nОсновные операции со списками \n"
+                                        "squares = [x**2 for x in range(10)]  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81] \n"
+                                        "- Доступ к элементам списка: Элементы списка индексируются, начиная с 0. Можно использовать отрицательные индексы для доступа к элементам с конца списка.\n"
+                                        "fruits = ['apple', 'banana', 'cherry'] \nprint(fruits[0])  # apple \nprint(fruits[-1])  # cherry \n"
+                                        "- Изменение элементов списка: \n"
+                                        "fruits[1] = 'orange' \nprint(fruits)  # ['apple', 'orange', 'cherry'] \n"
+                                        "- Срезы (slicing): Срезы позволяют получить подсписок из списка. \n"
+                                        "numbers = [1, 2, 3, 4, 5] \nprint(numbers[1:3])  # [2, 3] \nprint(numbers[:3])   # [1, 2, 3] \nprint(numbers[2:])   # [3, 4, 5] \n"
+                                        "- Длина списка: \n"
+                                        "print(len(numbers))  # 5\n"
+                                        "- Проверка наличия элемента в списке: \n"
+                                        "print('apple' in fruits)  # True\n"
+                                        "\n\nМетоды списков"
+                                        "\n\nДобавление элементов:\n"
+                                        "- append(): добавляет элемент в конец списка. \nfruits.append('grape')\n"
+                                        "- insert(): вставляет элемент на определенную позицию. \nfruits.insert(1, 'kiwi')\n"
+                                        "- extend(): добавляет несколько элементов в конец списка. \nfruits.extend(['mango', 'pineapple'])\n"
+                                        "\n\nУдаление элементов:\n"
+                                        "- remove(): удаляет первый найденный элемент. \nfruits.remove('banana')\n"
+                                        "- pop(): удаляет элемент по индексу (по умолчанию последний). \nfruits.pop(1)\n"
+                                        "- clear(): очищает весь список. \nfruits.clear()\n")
         self.explanation_label.setStyleSheet("font-size: 14px;")
 
-        self.start_button = QPushButton("Проверить знания по теме")
+        self.start_button = QPushButton("Проверить знания")
+        self.start_button.setStyleSheet("font-size: 16px;")
 
         layout = QVBoxLayout()
         layout.addWidget(self.label, alignment=Qt.AlignLeft)
@@ -66,7 +67,12 @@ class InitialWindow(QWidget):
         self.move(100, 100)
 
     def start_test(self):
-        from questions import QuestionsWindow
+        from test import QuestionsWindow
         self.hide()
         self.questions_window = QuestionsWindow()
         self.questions_window.show()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = InitialWindow()
+    sys.exit(app.exec_())
