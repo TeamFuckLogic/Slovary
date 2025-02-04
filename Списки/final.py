@@ -31,7 +31,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     score = 3 
     total = 5 
-    elapsed_time = "00:00:00"  # Пример времени, замените на реальное значение
+    elapsed_time = "00:00:00" 
     final_window = FinalWindow(score, total, elapsed_time)
     final_window.show()
     sys.exit(app.exec_())
