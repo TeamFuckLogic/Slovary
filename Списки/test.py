@@ -115,6 +115,26 @@ class QuestionsWindow(QWidget):
                     "total()"
                 ],
                 "answer": 0
+            },
+            {
+                "question": "11. ",
+                "options": [
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                "answer": 3
+            },
+            {
+                "question": "12. ",
+                "options": [
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                "answer": 1
             }
         ]
         self.show_question()
