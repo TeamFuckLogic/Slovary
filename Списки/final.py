@@ -38,11 +38,11 @@ class FinalWindow(QWidget):
                                 "8-9 правильных ответов: оценка 4\n"
                                 "10 правильных ответов: оценка 5")
 
+        layout.addWidget(criteria_label)
         layout.addWidget(result_label)
         layout.addWidget(grade_label)
         layout.addWidget(time_label)
-        layout.addWidget(criteria_label)
-
+        
         exit_button = QPushButton("Закрыть")
         exit_button.clicked.connect(self.close)
         layout.addWidget(exit_button)
