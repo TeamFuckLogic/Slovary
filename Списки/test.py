@@ -127,10 +127,10 @@ class QuestionsWindow(QWidget):
                 "answer": 3
             },
             {
-                "question": "12. ",
+                "question": "12. numbers = [1, 2, 3, 4, 5, 6] <br>even_numbers = [num for num in numbers if num % 2 == 0] <br>print(even_numbers)",
                 "options": [
-                    "",
-                    "",
+                    "[2, 4, 6]",
+                    "[1, 2, 3, 4, 5, 6]",
                     "",
                     ""
                 ],
