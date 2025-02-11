@@ -6,47 +6,48 @@ class FinalWindow(QWidget):
         super().__init__()
         self.score = score
         self.total = total
-        self.elapsed_time = elapsed_time 
+        self.elapsed_time = elapsed_time
         self.initUI()
 
+    def calculate_grade(self):
+        if self.score >= 0 and self.score <= 3:
+            return 2
+        elif self.score >= 4 and self.score <= 7:
+            return 3
+        elif self.score >= 8 and self.score <= 9:
+            return 4
+        elif self.score == 10:
+            return 5
+        else:
+            return None
+
     def initUI(self):
-        self.setWindowTitle("Итоги теста") 
-        self.resize(300, 200)
+        self.setWindowTitle("Итоги теста")
+        self.resize(300, 300)
         layout = QVBoxLayout()
-        
+
         result_label = QLabel(f"Вы ответили правильно на {self.score} из {self.total} вопросов.")
-        time_label = QLabel(f"Время прохождения: {self.elapsed_time}")  
-        
-        
-        grade = self.get_grade(self.score)
+        grade = self.calculate_grade()
         grade_label = QLabel(f"Ваша оценка: {grade}")
-        
+
+        time_label = QLabel(f"Время прохождения: {self.elapsed_time}")
+
+        criteria_label = QLabel("Критерии оценки:\n"
+                                "0-3 правильных ответа: оценка 2\n"
+                                "4-7 правильных ответов: оценка 3\n"
+                                "8-9 правильных ответов: оценка 4\n"
+                                "10 правильных ответов: оценка 5")
+
         layout.addWidget(result_label)
+        layout.addWidget(grade_label)
         layout.addWidget(time_label)
-        layout.addWidget(grade_label) 
-        
+        layout.addWidget(criteria_label)
+
         exit_button = QPushButton("Закрыть")
         exit_button.clicked.connect(self.close)
         layout.addWidget(exit_button)
         self.setLayout(layout)
 
-    def get_grade(self, score):
-        if 0 <= score <= 3:
-            return 2
-        elif 4 <= score <= 6:
-            return 3
-        elif 7 <= score <= 8:
-            return 4
-        elif 9 <= score <= 10:
-            return 5
-        else:
-            return "Недопустимый балл"  
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    score = 3  
-    total = 5 
-    elapsed_time = "00:00:00" 
-    final_window = FinalWindow(score, total, elapsed_time)
-    final_window.show()
     sys.exit(app.exec_())
