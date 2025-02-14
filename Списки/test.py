@@ -1,4 +1,3 @@
-
 import sys
 import time
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QRadioButton, QPushButton
@@ -117,24 +116,34 @@ class QuestionsWindow(QWidget):
                 "answer": 0
             },
             {
-                "question": "11. ",
+                "question": "11. numbers = [21, 34, 54, 12]\nprint(numbers)\nnumbers.append(32)\nprint(numbers)",
                 "options": [
-                    "",
-                    "",
-                    "",
-                    ""
+                    "[21, 34, 54, 12]\n[21, 34, 32]",
+                    "[21, 34, 54, 12]\n[21, 34, 54, 12, 32]",
+                    "[21, 34]\n[21, 34, 54, 12]",
+                    "[21, 34, 54, 12, 32]\n[21, 34, 54, 12, 32]"
+                ],
+                "answer": 1
+            },
+            {
+                "question": "12. languages = ['Python', 'Swift', 'C++', 'C', 'Java', 'Rust', 'R']\ndel languages[0 : 2]\nprint(languages)",
+                "options": [
+                    " ['Python', 'C++', 'C', 'Java', 'Rust']",
+                    "['C', 'Java', 'Rust', 'R']",
+                    " ['Swift', 'C', 'Java', 'Rust', 'R']",
+                    "['C', 'Java', 'Rust']"
                 ],
                 "answer": 3
             },
             {
-                "question": "12. numbers = [1, 2, 3, 4, 5, 6] <br>even_numbers = [num for num in numbers if num % 2 == 0] <br>print(even_numbers)",
+                "question": "13. languages = ['Python', 'Swift', 'C++']\nprint(languages)\nprint(len(languages))",
                 "options": [
-                    "[2, 4, 6]",
-                    "[1, 2, 3, 4, 5, 6]",
-                    "",
-                    ""
+                    "['Python', 'Swift', 'C++']\n3",
+                    "['Python', 'Swift', 'C++']\n2",
+                    "['Python', 'Swift', 'C++']\n['Python', 'Swift', 'C++']",
+                    "['Python', 'Swift', 'C++']\n0"
                 ],
-                "answer": 1
+                "answer": 0
             }
         ]
         self.show_question()
