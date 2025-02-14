@@ -47,7 +47,7 @@ class QuestionsWindow(QWidget):
         self.start_time = time.time()  
         self.timer = QTimer(self)  
         self.timer.timeout.connect(self.update_timer)  
-        self.timer.start(1000) 
+        self.timer.start(1000)  
         self.questions = [
             {
                 "question": "1. Что такое список в Python?",
