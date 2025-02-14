@@ -3,11 +3,13 @@ import time
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QRadioButton, QPushButton
 from PyQt5.QtCore import QTimer
 from final import FinalWindow
-from student import StudentInfoWindow  # Импортируем новый класс
+from student import StudentInfoWindow 
 
 class QuestionsWindow(QWidget):
-    def __init__(self):
+    def __init__(self, name, group):
         super().__init__()
+        self.name = name
+        self.group = group
         self.initUI()
         self.current_question = 0
         self.score = 0
@@ -205,7 +207,6 @@ class QuestionsWindow(QWidget):
         formatted_time = f"{hours:02}:{minutes:02}:{seconds:02}"  
         self.hide()
         
-
         self.final_window = FinalWindow(self.score, len(self.questions), formatted_time) 
         self.final_window.show()
          

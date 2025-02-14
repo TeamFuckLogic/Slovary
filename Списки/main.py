@@ -2,8 +2,7 @@ import sys
 from PyQt5.QtCore import Qt
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QScrollArea
-from student import StudentInfoWindow  # Импортируем класс для ввода информации о студенте
-from test import QuestionsWindow  # Импортируем класс для теста
+from student import StudentInfoWindow  # Импортируйте StudentInfoWindow
 
 class InitialWindow(QWidget):
     def __init__(self):
@@ -53,7 +52,7 @@ class InitialWindow(QWidget):
             " - remove(): удаляет первый найденный элемент.<br>   fruits.remove('banana')<br>"
             " - pop(): удаляет элемент по индексу (по умолчанию последний).<br>   fruits.pop(1)<br>"
             " - del(): удаляет один или несколько элементов из списка.<br>   del fruits[1]<br>"
-            " - clear(): очищает весь список.<br>   fruits.clear()"
+            " - clear(): очищает весь список.<br>"
         )
         
         self.explanation_label.setStyleSheet("font-size: 18px;")
@@ -77,21 +76,17 @@ class InitialWindow(QWidget):
         self.setLayout(layout)
 
     def connects(self):
-        self.start_button.clicked.connect(self.open_student_info)
+        self.start_button.clicked.connect(self.start_student)
 
     def set_appear(self):
         self.setWindowTitle("Python | Списки")
         self.resize(500, 500)
         self.move(100, 100)
 
-    def open_student_info(self):
+    def start_student(self):
+        from student import StudentInfoWindow  # Измените на StudentInfoWindow
         self.hide()
-        self.student_info_window = StudentInfoWindow(self.start_test)
-        self.student_info_window.show()
-
-    def start_test(self, name, group):
-        self.hide()
-        self.questions_window = QuestionsWindow(name, group)
+        self.questions_window = StudentInfoWindow(self.start_test)  # Передайте callback
         self.questions_window.show()
 
 if __name__ == "__main__":
