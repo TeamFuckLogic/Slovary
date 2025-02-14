@@ -17,12 +17,12 @@ class InitialWindow(QWidget):
         # Заголовок
         self.title_label = QLabel("Лекция Python | Списки")
         self.title_label.setStyleSheet("font-size: 20px; font-weight: bold;")
-        self.title_label.setAlignment(Qt.AlignCenter)  # Центрируем заголовок
+        self.title_label.setAlignment(Qt.AlignCenter) 
 
         # Создаем QLabel с текстом
         self.explanation_label = QLabel(
-            "<i> Список (list)</i> — это один из самых важных и часто используемых типов данных в Python. Список представляет собой упорядоченную коллекцию элементов, <br>"
-            " которые могут быть любого типа: числа, строки, другие списки и т.д. Списки являются изменяемыми, что означает, что вы можете изменять их содержимое после создания.<br>"
+            "<i> Список (list)</i> — это один из самых важных и часто используемых типов данных в Python. Список представляет собой упорядоченную <br>коллекцию элементов, "
+            " которые могут быть любого типа: числа, строки, другие списки и т.д. Списки являются изменяемыми, что означает, <br>что вы можете изменять их содержимое после создания.<br>"
             " my_list = [1, 2, 3, 'Python', True]<br>"
             "<br><b><i> Способы создания списков:</i></b><br>"
             " - Прямое создание списка:<br>"
@@ -34,7 +34,7 @@ class InitialWindow(QWidget):
             " - Инициализация списков с помощью генераторов:<br>"
             "<br><b><i> Основные операции со списками:</i></b><br>"
             "   squares = [x**2 for x in range(10)]  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]<br>"
-            " - Доступ к элементам списка: Элементы списка индексируются, начиная с 0. Можно использовать отрицательные индексы для доступа к элементам с конца списка.<br>"
+            " - Доступ к элементам списка: Элементы списка индексируются, начиная с 0. Можно использовать отрицательные индексы для доступа к <br>элементам с конца списка.<br>"
             "   fruits = ['apple', 'banana', 'cherry'] <br>print(fruits[0])  # apple <br>print(fruits[-1])  # cherry <br>"
             " - Изменение элементов списка:<br>"
             "   fruits[1] = 'orange' <br>print(fruits)  # ['apple', 'orange', 'cherry'] <br>"
@@ -56,13 +56,13 @@ class InitialWindow(QWidget):
             " - clear(): очищает весь список.<br>   fruits.clear()"
         )
         
-        self.explanation_label.setStyleSheet("font-size: 14px;")
+        self.explanation_label.setStyleSheet("font-size: 18px;")
 
         # Создаем QScrollArea
         self.scroll_area = QScrollArea()
-        self.scroll_area.setWidgetResizable(True)  # Позволяет QLabel изменять размер
-        self.scroll_area.setFixedHeight(850)  # Устанавливаем фиксированную высоту для области прокрутки
-        self.scroll_area.setFixedWidth(1200)  # Устанавливаем фиксированную ширину для области прокрутки
+        self.scroll_area.setWidgetResizable(True)  
+        self.scroll_area.setFixedHeight(850)  
+        self.scroll_area.setFixedWidth(1200)  
 
 
         # Устанавливаем QLabel как виджет для QScrollArea
@@ -72,8 +72,8 @@ class InitialWindow(QWidget):
         self.start_button.setStyleSheet("font-size: 16px;")
 
         layout = QVBoxLayout()
-        layout.addWidget(self.title_label, alignment=Qt.AlignCenter)  # Добавляем заголовок в layout
-        layout.addWidget(self.scroll_area, alignment=Qt.AlignLeft)  # Добавляем QScrollArea в layout
+        layout.addWidget(self.title_label, alignment=Qt.AlignCenter)  
+        layout.addWidget(self.scroll_area, alignment=Qt.AlignLeft) 
         layout.addWidget(self.start_button, alignment=Qt.AlignCenter)
         self.setLayout(layout)
 
@@ -82,7 +82,7 @@ class InitialWindow(QWidget):
 
     def set_appear(self):
         self.setWindowTitle("Python | Списки")
-        self.resize(700, 600)
+        self.resize(500, 500)
         self.move(100, 100)
 
     def start_test(self):
