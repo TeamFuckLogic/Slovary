@@ -2,7 +2,8 @@ import sys
 from PyQt5.QtCore import Qt
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QScrollArea
-
+from student import StudentInfoWindow  # Импортируем класс для ввода информации о студенте
+from test import QuestionsWindow  # Импортируем класс для теста
 
 class InitialWindow(QWidget):
     def __init__(self):
@@ -13,7 +14,6 @@ class InitialWindow(QWidget):
         self.show()
 
     def initUI(self):
-
         # Заголовок
         self.title_label = QLabel("Лекция Python | Списки")
         self.title_label.setStyleSheet("font-size: 20px; font-weight: bold;")
@@ -64,7 +64,6 @@ class InitialWindow(QWidget):
         self.scroll_area.setFixedHeight(850)  
         self.scroll_area.setFixedWidth(1200)  
 
-
         # Устанавливаем QLabel как виджет для QScrollArea
         self.scroll_area.setWidget(self.explanation_label)
 
@@ -78,17 +77,21 @@ class InitialWindow(QWidget):
         self.setLayout(layout)
 
     def connects(self):
-        self.start_button.clicked.connect(self.start_test)
+        self.start_button.clicked.connect(self.open_student_info)
 
     def set_appear(self):
         self.setWindowTitle("Python | Списки")
         self.resize(500, 500)
         self.move(100, 100)
 
-    def start_test(self):
-        from test import QuestionsWindow
+    def open_student_info(self):
         self.hide()
-        self.questions_window = QuestionsWindow()
+        self.student_info_window = StudentInfoWindow(self.start_test)
+        self.student_info_window.show()
+
+    def start_test(self, name, group):
+        self.hide()
+        self.questions_window = QuestionsWindow(name, group)
         self.questions_window.show()
 
 if __name__ == "__main__":

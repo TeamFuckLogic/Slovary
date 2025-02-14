@@ -2,13 +2,11 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton
 
 class FinalWindow(QWidget):
-    def __init__(self, score, total, elapsed_time, student_name, student_group):
+    def __init__(self, score, total, elapsed_time):
         super().__init__()
         self.score = score
         self.total = total
         self.elapsed_time = elapsed_time 
-        self.student_name = student_name
-        self.student_group = student_group
         self.initUI()
 
     def calculate_grade(self):
@@ -49,12 +47,6 @@ class FinalWindow(QWidget):
         exit_button.clicked.connect(self.close)
         layout.addWidget(exit_button)
         self.setLayout(layout)
-
-        self.save_results()
-
-    def save_results(self):
-        with open("res.txt", "a") as file:
-            file.write(f"ФИО: {self.student_name}, Группа: {self.student_group}, Оценка: {self.calculate_grade()}, Время: {self.elapsed_time}\n")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

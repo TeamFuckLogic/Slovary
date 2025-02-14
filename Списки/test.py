@@ -1,42 +1,9 @@
 import sys
 import time
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QRadioButton, QPushButton, QLineEdit, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QRadioButton, QPushButton
 from PyQt5.QtCore import QTimer
-from final import FinalWindow 
-
-class StudentInfoWindow(QWidget):
-    def __init__(self, callback):
-        super().__init__()
-        self.callback = callback
-        self.initUI()
-
-    def initUI(self):
-        self.setWindowTitle("Информация о студенте")
-        self.resize(300, 150)
-        layout = QVBoxLayout()
-
-        self.name_input = QLineEdit(self)
-        self.name_input.setPlaceholderText("ФИО")
-        layout.addWidget(self.name_input)
-
-        self.group_input = QLineEdit(self)
-        self.group_input.setPlaceholderText("Группа")
-        layout.addWidget(self.group_input)
-
-        submit_button = QPushButton("Начать тест")
-        submit_button.clicked.connect(self.submit_info)
-        layout.addWidget(submit_button)
-
-        self.setLayout(layout)
-
-    def submit_info(self):
-        name = self.name_input.text()
-        group = self.group_input.text()
-        if name and group:
-            self.callback(name, group)
-            self.close()
-        else:
-            QMessageBox.warning(self, "Ошибка", "Пожалуйста, заполните все поля.")
+from final import FinalWindow
+from student import StudentInfoWindow  # Импортируем новый класс
 
 class QuestionsWindow(QWidget):
     def __init__(self):
@@ -238,16 +205,13 @@ class QuestionsWindow(QWidget):
         formatted_time = f"{hours:02}:{minutes:02}:{seconds:02}"  
         self.hide()
         
-        self.final_window = FinalWindow(self.score, len(self.questions), formatted_time, self.student_name, self.student_group) 
-        self.final_window.show()
 
-    def start_test(self, name, group):
-        self.student_name = name
-        self.student_group = group
-        self.show_question()
+        self.final_window = FinalWindow(self.score, len(self.questions), formatted_time) 
+        self.final_window.show()
+         
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    student_info_window = StudentInfoWindow(lambda name, group: QuestionsWindow().start_test(name, group))
-    student_info_window.show()
+    window = QuestionsWindow()
+    window.show()
     sys.exit(app.exec_())
