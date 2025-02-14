@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QPushButton, QMessageBox, QApplication
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QPushButton, QMessageBox
 
 class StudentInfoWindow(QWidget):
     def __init__(self, callback):
@@ -35,15 +35,8 @@ class StudentInfoWindow(QWidget):
         else:
             QMessageBox.warning(self, "Ошибка", "Пожалуйста, заполните все поля.")
 
-def start_app():
-    app = QApplication(sys.argv)
-    def open_test_window(name, group):
-        test_window = TestWindow(name, group)
-        test_window.show()
-
-    student_info_window = StudentInfoWindow(open_test_window)
-    student_info_window.show()
-    sys.exit(app.exec_())
-
-if __name__ == '__main__':
-    start_app()
+    def start_test(self, name, group):
+        from test import QuestionsWindow  # Убедитесь, что здесь правильный класс
+        self.hide()
+        self.test_window = QuestionsWindow(name, group)  # Передайте имя и группу
+        self.test_window.show()
