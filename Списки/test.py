@@ -146,6 +146,26 @@ class QuestionsWindow(QWidget):
                     "['Python', 'Swift', 'C++']\n0"
                 ],
                 "answer": 0
+            },
+            {
+                "question": "14. fruits = ['apple', 'banana', 'cherry'] \nfruits[1] = 'orange' \nprint(fruits)",
+                "options": [
+                    "['apple', 'banana', 'cherry']",
+                    "['apple', 'banana', 'cherry', 'orange']",
+                    "['apple', 'orange', 'cherry']",
+                    "['orange', 'banana', 'cherry', 'apple']"
+                ],
+                "answer": 2
+            },
+            {
+                "question": "15. squares = []\nfor number in range(1, 101):\nif number % 2 == 0:  # Проверка на четность\nif len(squares) < 2:  # Условие для добавления только двух четных чисел\nsquares.append(number)\nprint(squares) ",
+                "options": [
+                    "[1, 2, 4]",
+                    "[2, 4, 6]",
+                    "[1, 4]",
+                    "[2, 4]"
+                ],
+                "answer": 3
             }
         ]
         self.show_question()
