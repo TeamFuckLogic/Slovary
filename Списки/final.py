@@ -2,8 +2,10 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton
 
 class FinalWindow(QWidget):
-    def __init__(self, score, total, elapsed_time):
+    def __init__(self, name, group, score, total, elapsed_time):
         super().__init__()
+        self.name = name
+        self.group = group
         self.score = score
         self.total = total
         self.elapsed_time = elapsed_time 
@@ -47,6 +49,16 @@ class FinalWindow(QWidget):
         exit_button.clicked.connect(self.close)
         layout.addWidget(exit_button)
         self.setLayout(layout)
+
+        # Записываем результаты в файл
+        self.save_results()
+
+    def save_results(self):
+        with open("rec.txt", "a") as file:  # Открываем файл в режиме добавления
+            file.write(f"ФИО: {self.name}, Группа: {self.group} \n"
+                       f"Правильные ответы: {self.score} \n"
+                       f"Всего вопросов: {self.total} \n"
+                       f"Время: {self.elapsed_time}\n")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

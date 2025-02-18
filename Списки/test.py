@@ -2,8 +2,7 @@ import sys
 import time
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QRadioButton, QPushButton
 from PyQt5.QtCore import QTimer
-from final import FinalWindow
-from student import StudentInfoWindow 
+from final import FinalWindow 
 
 class QuestionsWindow(QWidget):
     def __init__(self, name, group):
@@ -160,9 +159,14 @@ class QuestionsWindow(QWidget):
         self.timer_label = QLabel("Время: 00:00:00")
         self.layout.addWidget(self.timer_label)
 
+        # Отображение ФИО и группы
+        self.info_label = QLabel(f"ФИО: {self.name}, Группа: {self.group}")
+        self.layout.addWidget(self.info_label)
+
     def show_question(self):
         self.clear_layout()  
         self.layout.addWidget(self.timer_label) 
+        self.layout.addWidget(self.info_label)  # Добавляем информацию о пользователе
         self.layout.addWidget(QLabel(self.questions[self.current_question]["question"]))
         self.radio_buttons = []
         for i, option in enumerate(self.questions[self.current_question]["options"]):
@@ -187,7 +191,7 @@ class QuestionsWindow(QWidget):
     def clear_layout(self):
         for i in reversed(range(self.layout.count())):
             widget = self.layout.itemAt(i).widget()
-            if widget is not None and widget != self.timer_label:
+            if widget is not None and widget != self.timer_label and widget != self.info_label:
                 widget.deleteLater()
 
     def update_timer(self):
@@ -207,12 +211,12 @@ class QuestionsWindow(QWidget):
         formatted_time = f"{hours:02}:{minutes:02}:{seconds:02}"  
         self.hide()
         
-        self.final_window = FinalWindow(self.score, len(self.questions), formatted_time) 
+        # Передаем ФИО и группу в FinalWindow
+        self.final_window = FinalWindow(self.name, self.group, self.score, len(self.questions), formatted_time) 
         self.final_window.show()
-         
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = QuestionsWindow()
+    window = QuestionsWindow("Имя Фамилия", "Группа")  # Пример вызова
     window.show()
     sys.exit(app.exec_())
