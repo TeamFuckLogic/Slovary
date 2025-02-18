@@ -55,7 +55,7 @@ class FinalWindow(QWidget):
 
     def save_results(self):
         with open("rec.txt", "a") as file:  # Открываем файл в режиме добавления
-            file.write(f"ФИО: {self.name}, Группа: {self.group} \n"
+            file.write(f"\nФИО: {self.name}, Группа: {self.group} \n"
                        f"Правильные ответы: {self.score} \n"
                        f"Всего вопросов: {self.total} \n"
                        f"Время: {self.elapsed_time}\n")
