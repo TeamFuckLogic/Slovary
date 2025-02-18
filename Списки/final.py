@@ -16,9 +16,9 @@ class FinalWindow(QWidget):
             return 2
         elif self.score >= 4 and self.score <= 7:
             return 3
-        elif self.score >= 8 and self.score <= 9:
+        elif self.score >= 8 and self.score <= 11:
             return 4
-        elif self.score == 10:
+        elif self.score == 12:
             return 5
         else:
             return None 
@@ -37,8 +37,8 @@ class FinalWindow(QWidget):
         criteria_label = QLabel("Критерии оценки:\n"
                                 "0-3 правильных ответа: оценка 2\n"
                                 "4-7 правильных ответов: оценка 3\n"
-                                "8-10 правильных ответов: оценка 4\n"
-                                "11-13 правильных ответов: оценка 5")
+                                "8-13 правильных ответов: оценка 4\n"
+                                "14-15 правильных ответов: оценка 5")
         
         layout.addWidget(result_label)
         layout.addWidget(grade_label)

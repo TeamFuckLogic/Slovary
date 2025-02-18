@@ -158,7 +158,7 @@ class QuestionsWindow(QWidget):
                 "answer": 2
             },
             {
-                "question": "15. squares = []\nfor number in range(1, 101):\nif number % 2 == 0:  # Проверка на четность\nif len(squares) < 2:  # Условие для добавления только двух четных чисел\nsquares.append(number)\nprint(squares) ",
+                "question": "15. squares = []\nfor number in range(1, 101):\n  if number % 2 == 0:\n   if len(squares) < 2: \n   squares.append(number)\nprint(squares) ",
                 "options": [
                     "[1, 2, 4]",
                     "[2, 4, 6]",
